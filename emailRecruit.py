@@ -4,10 +4,16 @@ from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 from email.MIMEBase import MIMEBase
 from email import encoders
-import xlrd
+import xlrd # For working with Excel
 
 # Class to hold Recruiter Object
 # Recruiter Object has following attributes:-
+# First Name of Recruiter (String)
+# Last Name of Recruiter (String)
+# Company Name of Recruiter (String)
+# Mail ID of Recruiter (String)
+# Job Role of Opening (String)
+# Job ID of Opening (String)
 class Recruiter(object):
     def __init__(self, firstName, lastName, company, mailID, position, jobID):
         self.firstName = firstName
@@ -81,6 +87,7 @@ for sheet in wb.sheets():
         recruiter = Recruiter(*values)
         recruiters.append(recruiter)
 
+# Iterate over recruiter list and send email
 for recruiter in recruiters:
     msg['To'] = recruiter.mailID
     msg['Subject'] = "Danis Fermi-MS Student-Job Application for $insertPosition$ position".replace("$insertPosition$", recruiter.position)

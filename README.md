@@ -10,3 +10,7 @@ Attaching involves converting the attachment to Base64. This method works for te
 ### Body of the Mail
 
 The script uses the inbuilt string replace function to replace the generic string variables with company spcific values. Implemented in function getBody(), explained with inline comments.
+
+### Reading and Parsing from Excel
+
+The script uses Excel's xlrd Python library. A class is used to iterate over and store recruiter details. If you use a class, you can access all values via dot-notation (alternative would have been a dictionary).
