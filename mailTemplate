@@ -1,1 +1,10 @@
-Mail Template
+Hello $insertName$,
+
+$insertCompany$
+$insertPosition$
+
+Best Regards,
+Danis Fermi
+Graduate Student, Computer Networks
+North Carolina State University
+(919) 670-8734

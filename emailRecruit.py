@@ -5,6 +5,16 @@ from email.MIMEText import MIMEText
 from email.MIMEBase import MIMEBase
 from email import encoders
 
+def getBody(name, company, position):
+    try:
+        file = open("mailTemplate", "r")
+        body = file.read()
+        file.close()
+        return body.replace("$insertName$", name).replace("$insertCompany$", company).replace("$insertPosition$", position)
+    except IOError:
+        print "Error: File does not seem to exist."
+        return "Hello"
+
 fromaddr = "danisfermijohn@gmail.com"
 toaddr = "dfermi@ncsu.edu"
 
@@ -14,7 +24,7 @@ msg['From'] = fromaddr
 msg['To'] = toaddr
 msg['Subject'] = "Fall 2017 Full Time Application"
 
-body = "Hello"
+body = getBody("Name","Company","Position")
 msg.attach(MIMEText(body, 'plain'))
 
 filename = "resume.pdf"
