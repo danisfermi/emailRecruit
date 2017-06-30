@@ -5,6 +5,9 @@ from email.MIMEText import MIMEText
 from email.MIMEBase import MIMEBase
 from email import encoders
 
+# Function to read template mail from mailTemplate and replace generic strings with Company specific values
+# Takes Name, Company, Position as arguments
+# Returns Mail Body
 def getBody(name, company, position):
     try:
         file = open("mailTemplate", "r")
