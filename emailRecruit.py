@@ -6,15 +6,20 @@ from email.MIMEBase import MIMEBase
 from email import encoders
 import xlrd # For working with Excel
 
-# Class to hold Recruiter Object
-# Recruiter Object has following attributes:-
-# First Name of Recruiter (String)
-# Last Name of Recruiter (String)
-# Company Name of Recruiter (String)
-# Mail ID of Recruiter (String)
-# Job Role of Opening (String)
-# Job ID of Opening (String)
 class Recruiter(object):
+    """
+    Class to hold Recruiter Object
+    Recruiter Object has following attributes:-
+    * First Name of Recruiter (String)
+    * Last Name of Recruiter (String)
+    * Company Name of Recruiter (String)
+    * Mail ID of Recruiter (String)
+    * Job Role of Opening (String)
+    * Job ID of Opening (String)
+    Recruiter Object has following functions:-
+    __init__() - to initialize all values
+    __str__() - to return all attributes when object is used as string
+    """
     def __init__(self, firstName, lastName, company, mailID, position, jobID):
         self.firstName = firstName
         self.lastName = lastName
@@ -34,10 +39,12 @@ class Recruiter(object):
                .format(self.firstName, self.lastName, self.company,
                        self.mailID, self.position, self.jobID))
 
-# Function to read template mail from mailTemplate and replace generic strings with Company specific values
-# Takes Name, Company, Position as arguments
-# Returns Mail Body
 def getBody(name, company, position):
+    """
+    Function to read template mail from mailTemplate and replace generic strings with recruiter specific values
+    Takes Name(string), Company(string), Position(string) as arguments
+    Returns Mail Body (string)
+    """
     try:
         file = open("mailTemplate", "r")
         body = file.read()
@@ -47,7 +54,7 @@ def getBody(name, company, position):
         print "Error: File does not seem to exist."
         return "Hello"
 
-fromaddr = "danisfermijohn@gmail.com"
+fromaddr = "danisfermijohn@gmail.com" # Replace with your mail ID
 
 msg = MIMEMultipart()
 msg['From'] = fromaddr
